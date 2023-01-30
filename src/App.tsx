@@ -124,13 +124,13 @@ const App = () => {
 	}, [weather]);
 
 	return (
-		<div className="grid grid-cols-[70%_30%] overflow-hidden">
-			<div className="flex w-full h-[100vh] justify-between p-[3rem] gap-[3rem] flex-col">
+		<div className="grid grid-cols-[100%] sm:grid-cols-[70%_30%] overflow-hidden">
+			<div className="flex w-full h-[100vh] sm:justify-between p-[3rem] gap-[1rem] md:gap-[3rem] flex-col bg-black/30">
 				<h1 className="text-2xl text-black font-bold">
 					the.<span className="text-white">weather</span>
 				</h1>
 				{weather.temp_c && (
-					<div className="flex items-end gap-[3rem] flex-wrap">
+					<div className="flex items-end gap-[1rem] md:gap-[3rem] flex-wrap">
 						<div className="flex items-start">
 							<p className="text-9xl text-white font-bold">
 								{weather.temp_c}
@@ -152,7 +152,7 @@ const App = () => {
 					</div>
 				)}
 			</div>
-			<header className="relative h-[100vh] w-full backdrop-blur-xl bg-[#1d1e24]/20">
+			<header className="fixed bottom-0 sm:relative h-max sm:h-[100vh] w-full backdrop-blur-xl bg-[#1d1e24]/20">
 				<div className="flex ">
 					<input
 						type="text"
@@ -187,8 +187,12 @@ const App = () => {
 					</div>
 				)}
 				{weather.feelslike_c && (
-					<div className="p-[2rem_1rem] flex flex-col gap-[0.5rem] border-t-2 border-[#45565e]">
+					<div className="p-[2rem_1rem] hidden sm:flex flex-col gap-[0.5rem] border-t-2 border-[#45565e]">
 						<h2 className="text-3xl font-[600]">Weather Details</h2>
+						<p className="text-white">
+							Temp in C: {weather.temp_c}
+							<sup>o</sup>
+						</p>
 						<p className="text-white">
 							Feels like: {weather.feelslike_c}
 							<sup>o</sup>
@@ -200,6 +204,22 @@ const App = () => {
 						<p className="text-white">
 							Wind: {weather.wind_kph}
 							<sup>kph</sup>
+						</p>
+						<p className="text-white">
+							Pressure: {weather.pressure_mb}
+							<sup>mb</sup>
+						</p>
+						<p className="text-white">
+							Cloud: {weather.cloud}
+							<sup>%</sup>
+						</p>
+						<p className="text-white">
+							Visibility: {weather.vis_km}
+							<sup>km</sup>
+						</p>
+						<p className="text-white">
+							UV: {weather.uv}
+							<sup>uv</sup>
 						</p>
 					</div>
 				)}
